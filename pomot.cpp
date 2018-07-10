@@ -1,5 +1,5 @@
+#include <stdlib.h>
 #include <ctime>
-#include <unistd.h>
 #include <iostream>
 #include "timer.h"
 
@@ -11,23 +11,27 @@ using namespace std;
 
 int main(int argc, char * argv[])
 {
+    int min_ep, min_br;
+
     /* Check input values */
-    if(argc == 1){
-        Timer t;
+    if (argc == 1) {
+        min_ep = 25;
+        min_br = 5;
     } else if (argc == 3){
-        int m_e = atoi(argv[1]);
-        int m_b = atoi(argv[1]);
-        if(m_e < 0 || m_b < 0) {
+        min_ep = atoi(argv[1]);
+        min_br = atoi(argv[1]);
+        if(min_ep < 0 || min_br < 0) {
             cerr << "Arguments must be positive, you would not want subtract from your work hours!" << endl;
             return 1;
         }
-        Timer t(m_e, m_b);
     } else {
         cerr << "Usage: pomot | pomot <mins for episode> <mins for break>" << endl;
         return 1;
     }
 
-    t.start();
+    Timer main_timer(min_ep, min_br);
+
+    main_timer.start();
     cout << "Timer started." << endl;
     
 
