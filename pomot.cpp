@@ -31,8 +31,8 @@ int main(int argc, char * argv[])
 
     Timer main_timer(min_ep, min_br);
 
-    main_timer.start();
-    cout << "Timer started." << endl;
+    main_timer.run();
+    cout << "Timer ended." << endl;
     
 
 }

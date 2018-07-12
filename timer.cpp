@@ -21,11 +21,34 @@ void Timer::set_mins_break(uint16_t m)
     mins_break = m;
 }
 
-void Timer::start()
+void Timer::run()
 {
-    // filler code only
-    time_t result = time(nullptr);
-    usleep(3000000);
-    time_t result2 = time(nullptr);
-    cout << result2 - result << " seconds since the Epoch\n";
+    cout << "GO!";
+    for (uint16_t i = mins_episode * 60; i > 0; i--) {
+        cout  << '\r' << flush << to_time(i);
+        sleep(1);
+    }
+    cout << '\r' << flush << "00:00" << endl;
+}
+
+string Timer::to_time(uint16_t seconds)
+{
+    int secs, mins;
+    string ret;
+
+    mins = seconds / 60;
+    if (mins < 10) {
+        ret = "0" + to_string(mins);
+    } else {
+        ret = to_string(mins);
+    }
+    ret += ":";
+    secs = seconds % 60;
+    if (secs < 10) {
+        ret += "0" + to_string(secs);
+    } else {
+        ret += to_string(secs);
+    }
+    
+    return ret;
 }
