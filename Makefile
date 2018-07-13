@@ -7,4 +7,4 @@ DEPS=timer.h
 	$(CXX) -c -o $@ $< $(CXXFLAGS)
 
 pomot: timer.o pomot.cpp
-	$(CXX) -o pomot timer.o pomot.cpp
+	$(CXX) -o pomot timer.o pomot.cpp -lmpg123 -lao

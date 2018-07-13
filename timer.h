@@ -12,6 +12,7 @@ class Timer
         void set_mins_break(uint16_t m);
         void run();
         string to_time(uint16_t seconds);
+        void play_sound(string path);
 
     private:
         uint16_t mins_episode;
