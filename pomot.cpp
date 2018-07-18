@@ -2,6 +2,7 @@
 #include <ctime>
 #include <iostream>
 #include "timer.h"
+#include "worklog.h"
 
 #define POMODORO_DEFAULT 1500000000
 
@@ -30,6 +31,8 @@ int main(int argc, char * argv[])
     }
 
     Timer main_timer(min_ep, min_br);
+    Worklog log;
+    cout << "Currently saving into " << log.get_filename() << endl;
 
     main_timer.run();
     cout << "Timer ended." << endl;
