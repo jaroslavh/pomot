@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <ctime>
 #include <iostream>
+#include <fstream>
+#include <string>
 #include "timer.h"
 #include "worklog.h"
 
@@ -34,8 +36,16 @@ int main(int argc, char * argv[])
     Worklog log;
     cout << "Currently saving into " << log.get_filename() << endl;
 
-    main_timer.run();
-    cout << "Timer ended." << endl;
-    
+    while (true) {
+        main_timer.run();
 
+        string output_log;
+        int len = 0;
+        cout << "Your work episode ended, please enter what you want to log:" << endl;
+
+        getline(cin, output_log);
+
+        log.worklog_append(output_log);
+    }
+    return 0;
 }
